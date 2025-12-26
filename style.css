@@ -21,6 +21,11 @@ a {
     font-weight: bold;
 }
 
+nav ul {
+    margin: 0;
+    padding: 0;
+}
+
 li {
     list-style: none;
     float: left;
@@ -78,8 +83,14 @@ section {
     background-image: url(../images/Neptune.jpg);
 }
 
+aside {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
 
 footer {
     text-align: center;
     background-color: #388bff
-}
