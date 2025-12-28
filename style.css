@@ -1,15 +1,59 @@
+/* =========================
+   Base style (ของเดิม)
+   ========================= */
+
 body {
-    width: 650px;
-    margin: 0 auto;
+    margin: 0;
     background: black;
     color: #FFF;
     font: 20px sans-serif;
+
+    /* ===== Global Layout : CSS Grid ===== */
+    display: grid;
+    grid-template-columns: 220px 1fr 280px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header header"
+        "nav    main   sidebar"
+        "footer footer footer";
+    min-height: 100vh;
+    gap: 16px;
+    padding: 16px;
 }
 
 header {
+    grid-area: header;
     padding: 10px 0px;
     font-size: 1.5em;
 }
+
+nav {
+    grid-area: nav;
+}
+
+main {
+    grid-area: main;
+    margin-top: 0;
+
+    /* layout ภายใน main (article + aside) */
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 16px;
+}
+
+main aside {
+    grid-area: sidebar;
+}
+
+footer {
+    grid-area: footer;
+    text-align: center;
+    background-color: #388bff;
+}
+
+/* =========================
+   Typography & content
+   ========================= */
 
 h3 {
     font-size: 20px;
@@ -21,6 +65,9 @@ a {
     font-weight: bold;
 }
 
+/* =========================
+   Navigation
+   ========================= */
 nav ul {
     display: flex;
     gap: 0;
@@ -36,16 +83,15 @@ li {
     padding: 0px 10px;
 }
 
-main {
-    margin-top: 50px;
-}
+/* =========================
+   Tables
+   ========================= */
 
 table {
     font-size: 1rem;
     margin-bottom: 10px;
     border-spacing: 0;
 }
-
 
 caption {
     margin-bottom: 10px;
@@ -58,6 +104,9 @@ th, td {
     text-align: left;
 }
 
+/* =========================
+   Sections
+   ========================= */
 
 article {
     display: flex;
@@ -68,12 +117,11 @@ article {
 section {
     flex: 1 1 100%;
     margin: 20px 0px;
-    padding: 30px 20px 30px 20px;
+    padding: 30px 20px;
     border: 2px solid #FFF;
     border-radius: 20px;
-    box-shadow: 10px 10px 5px #888888
+    box-shadow: 10px 10px 5px #888888;
 }
-
 
 #jupiter {
     background-image: url(../images/Jupiter.jpg);
@@ -116,4 +164,23 @@ footer {
     background-color: #388bff;
     padding: 20px;
     margin-top: 30px;
+}
+
+/* =========================
+   Responsive (เสริมคะแนน)
+   ========================= */
+
+@media (max-width: 900px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "footer";
+    }
+
+    main {
+        grid-template-columns: 1fr;
+    }
 }
