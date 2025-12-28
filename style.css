@@ -1,4 +1,4 @@
-/* =========================
+﻿/* =========================
    Base style (ของเดิม)
    ========================= */
 
@@ -47,8 +47,14 @@ main aside {
 
 footer {
     grid-area: footer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     background-color: #388bff;
+    padding: 20px;
+    margin-top: 30px;
 }
 
 /* =========================
@@ -84,34 +90,21 @@ li {
 }
 
 /* =========================
-   Tables
-   ========================= */
-
-table {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    border-spacing: 0;
-}
-
-caption {
-    margin-bottom: 10px;
-    font-size: 0.9em;
-    font-weight: bold;
-    text-align: left;
-}
-
-th, td {
-    text-align: left;
-}
-
-/* =========================
    Sections
    ========================= */
 
 article {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+}
+
+article h2 {
+    grid-column: 1 / -1;
+}
+
+article section {
+    margin: 0;
 }
 
 section {
@@ -124,19 +117,19 @@ section {
 }
 
 #jupiter {
-    background-image: url(../images/Jupiter.jpg);
+    background-image: url(images/Jupiter.jpg);
 }
 
 #saturn {
-    background-image: url(../images/Saturn.jpg);
+    background-image: url(images/Saturn.jpg);
 }
 
 #uranus {
-    background-image: url(../images/Uranus.jpg);
+    background-image: url(images/Uranus.jpg);
 }
 
 #neptune {
-    background-image: url(../images/Neptune.jpg);
+    background-image: url(images/Neptune.jpg);
 }
 
 aside {
@@ -155,17 +148,6 @@ aside p {
     padding: 10px;
 }
 
-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #388bff;
-    padding: 20px;
-    margin-top: 30px;
-}
-
 /* =========================
    Responsive (เสริมคะแนน)
    ========================= */
@@ -181,6 +163,10 @@ footer {
     }
 
     main {
+        grid-template-columns: 1fr;
+    }
+
+    article {
         grid-template-columns: 1fr;
     }
 }
