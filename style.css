@@ -1,14 +1,16 @@
 body {
-    width: 650px;
-    margin: 0 auto;
+    /* width: 650px; removed for responsive header Edit by 66030130*/
+    /* margin: 0 auto; removed Edit by 66030130*/
     background: black;
     color: #FFF;
     font: 20px sans-serif;
 }
 
 header {
+    width: auto;
     padding: 10px 0px;
     font-size: 1.5em;
+    text-align: center; /* #Edit by 66030130 */
 }
 
 h3 {
@@ -23,13 +25,15 @@ a {
 
 nav ul {
     margin: 0;
-    padding: 0;
+    padding: 20px 0; /* #Edit by 66030130 */
+    display: flex; /* #Edit by 66030130 */
+    justify-content: center; /* #Edit by 66030130 */
+    gap: 40px; /* #Edit by 66030130 */
 }
 
 li {
     list-style: none;
-    float: left;
-}
+} /* #Edit by 66030130 */
 
 .menu {
     padding: 0px 10px;
@@ -37,6 +41,8 @@ li {
 
 main {
     margin-top: 50px;
+    width: 650px; /* #Edit by 66030130 */
+    margin: 50px auto 0; /* #Edit by 66030130 */
 }
 
 table {
