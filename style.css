@@ -24,19 +24,34 @@ a {
 nav ul {
     margin: 0;
     padding: 0;
+    display: flex;
 }
 
 li {
     list-style: none;
-    float: left;
 }
 
 .menu {
     padding: 0px 10px;
 }
 
-main {
+.main-layout {
     margin-top: 50px;
+    display: flex;
+    gap: 20px;
+    align-items : flex-start;
+}
+.main-layout article{
+    flex: 3;
+}
+.sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15 px;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #1a1a1a;
 }
 
 table {
@@ -60,7 +75,7 @@ th, td {
 
 section {
     margin: 20px 0px;
-    padding: 30px 20px 30px 20px;
+    padding: 30px 20px ;
     border: 2px solid #FFF;
     border-radius: 20px;
     box-shadow: 10px 10px 5px #888888
@@ -83,14 +98,10 @@ section {
     background-image: url(../images/Neptune.jpg);
 }
 
-aside {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #1a1a1a;
 
-footer {
+.footer {
     text-align: center;
-    background-color: #388bff
+    background-color: #388bff ;
+    padding: 15px 0;
+    margin-top: 30 px;
+}
