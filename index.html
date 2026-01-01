@@ -5,6 +5,21 @@
     <title>The Gas Giants</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<!--
+================================================================================
+PROJECT: The Gas Planets Site
+TEAM: man in the middle
+================================================================================
+HTML Structure Overview:
+- Header: ชื่อเว็บไซต์หลัก
+- Nav: เมนูนำทาง (ใช้ Flexbox จัดแนวนอน)
+- Main > Article: กลุ่มการ์ดดาวเคราะห์ (ใช้ CSS Grid 2 คอลัมน์)
+  - 4 Sections: Jupiter, Saturn, Uranus, Neptune
+  - แต่ละ section ใช้ Flexbox column layout
+- Aside: Sidebar เนื้อหาเสริม (ใช้ Flexbox)
+- Footer: เครดิตท้ายเว็บ
+================================================================================
+-->
 <body>
     <header>
         <h1>The Gas Planets site</h1>
@@ -17,11 +32,24 @@
         </ul>
     </nav>
     <main>
+        <!-- 
+        Article Container: CSS Grid 2 คอลัมน์ (ด่วน: นายภูมิ อัครธรรม 66030270)
+        - grid-template-columns: repeat(2, 1fr) สำหรับจัดการ์ดดาวเคราะห์ 
+        - gap: 20px ระยะห่างระหว่างการ์ด
+        -->
         <article>
             <h2>The gas giants</h2>
             
+            <!-- 
+            Planet Sections: Flexbox column layout (ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281)
+            - display: flex; flex-direction: column; จัดเนื้อหาแนวตั้ง
+            - gap: ระยะห่างระหว่างรูป/ข้อความ/ตาราง
+            - background-image + blend-mode: multiply ให้ข้อความ readable
+            -->
+            
             <section id="jupiter">
                 <h3>Jupiter</h3>
+                <img src="/images/Jupiter.jpg" alt="Jupiter">
                 <p>Jupiter is the fifth planet from the Sun and the largest planet within the Solar System. The Romans named the planet after the god Jupiter. It is a gas giant with a mass two and a half times the mass of all the other planets in our Solar System combined.</p>
                 <table>
                     <caption>Jupiter Facts</caption>
@@ -49,6 +77,7 @@
 
             <section id="saturn">
                 <h3>Saturn</h3>
+                <img src="/images/Saturn.jpg" alt="Saturn">
                 <p>Saturn is the sixth planet from the Sun and the second largest planet in the Solar System, after Jupiter. Saturn is named after the Roman god Saturn, equated to the Greek Cronus (the Titan father of Zeus), the Babylonian Ninurta, and the Hindu Shani.</p>
                 <table>
                     <caption>Saturn Facts</caption>
@@ -76,6 +105,7 @@
 
             <section id="uranus">
                 <h3>Uranus</h3>
+                <img src="/images/Uranus.jpg" alt="Uranus">
                 <p>Uranus is the seventh planet from the Sun, and the third-largest and fourth most massive planet in the Solar System. It is named after the ancient Greek deity of the sky Uranus the father of Cronus and grandfather of Zeus.</p>
                 <table>
                     <caption>Uranus Facts</caption>
@@ -103,6 +133,7 @@
 
             <section id="neptune">
                 <h3>Neptune</h3>
+                <img src="/images/Neptune.jpg" alt="Neptune">
                 <p>Neptune is the eighth and farthest planet from the Sun in our Solar System. Named for the Roman god of the sea, it is the fourth-largest planet by diameter and the third-largest by mass.</p>
                 <table>
                     <caption>Neptune Facts</caption>
@@ -130,6 +161,12 @@
         </article>
     </main>
 
+    <!-- 
+    Sidebar Container: Flexbox column layout (ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281)
+    - grid-area: sidebar จากการตั้ง grid-template-areas ใน body
+    - display: flex; flex-direction: column; gap: ระยะห่าง
+    - เนื้อหาเสริมสำหรับดาวเคราะห์ต่างๆ
+    -->
     <aside>
         <div class="sidebar-inner">
             <p>1st minor related content goes here</p>
@@ -137,6 +174,12 @@
             <p>3rd minor related content goes here</p>
         </div>
     </aside>
+    
+    <!-- 
+    Footer Container: Flexbox center (ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281)
+    - grid-area: footer ปกคลุมทั้งความกว้าง
+    - display: flex; justify-content/align-items: center; เพื่อจัดกึ่งกลาง
+    -->
     <footer>
         <hr>
         <p>Produced by myself</p>

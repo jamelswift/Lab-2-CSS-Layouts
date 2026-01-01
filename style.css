@@ -1,201 +1,238 @@
-﻿/* =========================
-   ผู้รับผิดชอบ: คนที่ 1 (Main Structure - Grid)
-   เทคนิค: CSS Grid สำหรับโครงสร้างหลัก
-   คะแนน: 30% - การใช้ CSS Grid
-   ========================= */
-
-/* เพิ่ม CSS Variables สำหรับธีมสีอวกาศม่วง-น้ำเงิน */
+﻿/* Added CSS Variables for theme colors */
 :root {
-  --color-primary: #6366f1;
-  --color-secondary: #8b5cf6;
-  --color-accent: #ec4899;
-  --color-dark: #0f0f23;
-  --color-glass: rgba(255, 255, 255, 0.08);
-  --color-glow: rgba(139, 92, 246, 0.5);
-  --color-orange: #faa202;
-  --color-text: #e2e8f0;
+  --color-primary: #a855f7;
+  --color-primary-light: #c084fc;
+  --color-primary-dark: #9333ea;
+  --color-secondary: #fcd34d;
+  --color-secondary-dark: #d97706;
+  --color-background-dark: #0f0f2e;
+  --color-background-medium: #1a1a3e;
+  --color-background-purple: #2d1b4e;
+  --color-text-light: #ffffff;
+  --color-text-gray: #e5e7eb;
+  --color-border-purple: rgba(168, 85, 247, 0.5);
+  --color-glass-bg: rgba(100, 50, 150, 0.4);
+  --spacing-small: 10px;
+  --spacing-medium: 20px;
+  --spacing-large: 30px;
+  --border-radius-small: 8px;
+  --border-radius-medium: 10px;
+  --border-radius-large: 15px;
 }
 
-body {
+* {
   margin: 0;
-  /* เพิ่ม gradient background ธีมอวกาศสีม่วง-น้ำเงิน */
-  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 25%, #2d1b69 50%, #1a1a3e 75%, #0f0f23 100%);
-  background-attachment: fixed;
-  color: var(--color-text);
-  font: 18px sans-serif;
-
-  /* ใช้ CSS Grid จัด Layout โครงสร้างหลักทั้งหมด */
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr auto auto;
-  grid-template-areas:
-    "header"
-    "nav"
-    "main"
-    "sidebar"
-    "footer";
-
-  min-height: 100vh;
-  gap: 20px;
-  padding: 20px;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 1 (Main Structure - Grid)
-   เทคนิค: กำหนด Grid Area สำหรับ Header
-   ========================= */
+/* Enhanced body with CSS Grid structure and improved gradient */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(
+    to bottom,
+    var(--color-background-dark) 0%,
+    var(--color-background-medium) 20%,
+    var(--color-background-purple) 50%,
+    var(--color-background-medium) 80%,
+    var(--color-background-dark) 100%
+  );
+  background-attachment: fixed;
+  color: var(--color-text-light);
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header sidebar"
+    "nav sidebar"
+    "main sidebar"
+    "footer footer";
+  gap: var(--spacing-medium);
+  padding: var(--spacing-medium);
+}
 
+/* Enhanced header with flexbox centering and glass morphism */
 header {
   grid-area: header;
-  padding: 20px 0;
-  font-size: 1.8em;
-
-  /* ใช้ Flexbox จัดกึ่งกลาง */
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* เพิ่ม glass morphism effect */
-  background: var(--color-glass);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(139, 92, 246, 0.3);
+  background: linear-gradient(135deg, rgba(100, 50, 150, 0.5), rgba(70, 40, 130, 0.6));
+  border: 2px solid var(--color-border-purple);
+  border-radius: var(--border-radius-large);
+  padding: var(--spacing-large);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* เพิ่มเอฟเฟกต์เรืองแสง gradient ให้กับหัวข้อ */
+header:hover {
+  border-color: rgba(168, 85, 247, 0.8);
+  box-shadow: 0 12px 48px rgba(168, 85, 247, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
 header h1 {
-  margin: 0;
-  text-shadow: 0 0 20px var(--color-glow), 0 0 40px var(--color-glow);
-  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  font-size: 3em;
+  background: linear-gradient(to right, var(--color-primary-light), var(--color-primary), var(--color-primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
+  animation: glow 2s ease-in-out infinite alternate;
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 2 (Navigation - Flexbox)
-   เทคนิค: ใช้ Flexbox ในการจัดเมนู (ไม่ใช้ float)
-   คะแนน: 20% - การใช้ Flexbox
-   ========================= */
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
+  }
+  to {
+    filter: drop-shadow(0 0 25px rgba(168, 85, 247, 0.6));
+  }
+}
 
+/* Enhanced nav with flexbox and improved hover effects */
 nav {
   grid-area: nav;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-small) 0;
 }
 
 nav ul {
-  /* ใช้ Flexbox จัดเรียงเมนูแนวนอน ไม่ใช้ float */
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin: 0;
-  padding: 0;
   list-style: none;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
 }
 
-.menu {
-  padding: 10px 20px;
-  border-radius: 12px;
+nav ul li {
+  flex: 1;
+  max-width: 180px;
+}
+
+nav a.menu {
+  display: block;
+  width: 100%;
+  padding: 12px 35px;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.35), rgba(168, 85, 247, 0.35));
+  border: 2px solid rgba(251, 191, 36, 0.6);
+  border-radius: var(--border-radius-small);
+  color: var(--color-secondary);
   text-decoration: none;
-  color: var(--color-orange);
-  font-weight: bold;
-  /* เพิ่ม glass effect และ smooth transition */
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+  backdrop-filter: blur(10px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
-.menu:hover {
-  /* เพิ่ม hover animation ที่ลื่นไหลพร้อมเรืองแสง */
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(139, 92, 246, 0.6);
+nav a.menu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 1 (Main Structure - Grid)
-   เทคนิค: กำหนด Grid Area สำหรับเนื้อหาหลัก
-   ========================= */
+nav a.menu:hover::before {
+  left: 100%;
+}
+
+nav a.menu:hover {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(168, 85, 247, 0.6));
+  border-color: rgba(251, 191, 36, 0.9);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(251, 191, 36, 0.3);
+}
 
 main {
   grid-area: main;
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 3 (Planet Grid - Grid)
-   เทคนิค: ใช้ CSS Grid จัดเรียงดาวเคราะห์แบบ 2x2
-   คะแนน: 30% - การใช้ CSS Grid
-   ========================= */
-
-article {
-  /* ใช้ CSS Grid สร้างตาราง 2 คอลัมน์ */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 30px;
-}
-
+/* Enhanced article heading with better typography */
 article h2 {
-  /* ให้หัวข้อครอบคลุมทั้ง 2 คอลัมน์ */
-  grid-column: 1 / -1;
   text-align: center;
-  margin-bottom: 30px;
   font-size: 2.5em;
-  /* เพิ่มเอฟเฟกต์เรืองแสง gradient */
-  text-shadow: 0 0 20px var(--color-glow), 0 0 40px var(--color-glow);
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary-light);
+  margin-bottom: var(--spacing-large);
+  text-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
+  letter-spacing: 2px;
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 4 (Card Content - Flexbox)
-   เทคนิค: ใช้ Flexbox จัดเนื้อหาภายในการ์ดดาวเคราะห์
-   คะแนน: 20% - การใช้ Flexbox
-   ========================= */
+/* 66030270 นาย ภูมิ อัครธรรม */
+article {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* กล่องดาวเรียงเป็น 2 คอลัมน์ */
+    gap: 20px;                             /* ตรงนี้เป็นตัวกำหนดช่องว่างให้เท่ากัน */
+}
 
+/* ตรงนี้ให้หัวข้อใน article  (h2) กว้างเต็มบรรทัด */
+article h2 {
+    grid-column: 1 / -1;
+}
+
+/* ตรงนี้ใช้ gap เป็นตัวคุมระยะห่าง ไม่ให้ margin ของ section มาซ้อน */
+article section {
+    margin: 0;
+}
+
+/* Enhanced planet cards with background image overlay
+   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281
+   - display: flex + flex-direction: column = ข้อความเรียงตั้ง
+   - background-image: url(images/[planet].jpg) = รูปดาวเคราะห์เบื้องหลัง
+   - background-blend-mode: multiply = ทำให้ดาวเข้ม ไม่แย่ง text
+   - backdrop-filter: blur(15px) = glass morphism effect
+   - border-radius: 24px = มุมโค้ง */
 section {
-  /* ใช้ Flexbox จัดเนื้อหาภายในการ์ด */
   display: flex;
   flex-direction: column;
   gap: 12px;
-
-  padding: 30px;
-  border-radius: 24px;
-
-  /* เพิ่ม glass morphism effect พร้อม gradient border */
-  background: var(--color-glass);
-  backdrop-filter: blur(16px);
-  border: 2px solid rgba(255, 255, 255, 0.18);
-
-  /* ใช้รูปพื้นหลังดาวเคราะห์ */
+  
+  /* Background image covering entire card */
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-color: rgba(0, 0, 0, 0.6);
-
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
-
-  /* เพิ่ม smooth transition สำหรับ hover */
+  
+  border: 2px solid rgba(255, 255, 255, 0.18);
+  border-radius: 24px;
+  padding: 30px;
+  backdrop-filter: blur(16px);
+  
+  /* Enhanced shadow for prominent card appearance */
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(168, 85, 247, 0.2), inset 0 1px 0
+    rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-/* เพิ่มเอฟเฟกต์เรืองแสง gradient รอบการ์ดเมื่อ hover */
 section::before {
+  /* Pseudo-element สำหรับเอฟเฟกต์เรืองแสงเมื่อ hover
+     ไม่ได้อยู่ใน HTML แต่สร้างขึ้นด้วย CSS
+     ให้การ์ดดูเรืองแสงและมีเรียวเจือจ้า */
   content: "";
   position: absolute;
-  inset: -2px;
-  border-radius: 24px;
-  padding: 2px;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s;
   z-index: -1;
 }
 
@@ -204,17 +241,123 @@ section:hover::before {
 }
 
 section:hover {
-  /* เพิ่ม hover animation ลื่นไหลพร้อมเรืองแสง */
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.6), 0 0 80px rgba(139, 92, 246, 0.6);
-  border-color: var(--color-primary);
+  /* Brighter purple border on hover */
+  border-color: rgba(168, 85, 247, 1);
+  transform: translateY(-8px) scale(1.02);
+  /* More intense glow effect on hover */
+  box-shadow: 0 16px 48px rgba(168, 85, 247, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.5), inset 0 1px 0
+    rgba(255, 255, 255, 0.1);
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 4 (Card Content - Flexbox)
-   เทคนิค: กำหนดรูปพื้นหลังแต่ละดาวเคราะห์
-   ========================= */
+section h3 {
+  /* ชื่อดาวเคราะห์ (Jupiter/Saturn/Uranus/Neptune)
+     - สีม่วงฟ้า (gradient text)
+     - ตัวหนา ขนาดใหญ่ */
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0 0 15px 0;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+}
 
+section img {
+  /* ป้องกัน <img> tag แสดงผล เพราะใช้ background-image แล้ว */
+  display: none;
+}
+
+section:hover img {
+  transform: scale(1.02);
+}
+
+section p {
+  font-size: 0.9em;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  /* Brighter text color for better readability on black background */
+  color: #e5e7eb;
+}
+
+/* Enhanced table with glass morphism effect
+   ตารางข้อมูล "Facts" อยู่บนรูปดาวเคราะห์
+   - background: rgba(...) = โปร่งใส
+   - th สีเหลือง (caption/header) */
+table {
+  width: 100%;
+  margin: 15px 0;
+  border-collapse: collapse;
+  font-size: 0.85em;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+caption {
+  color: var(--color-secondary);
+  font-weight: bold;
+  margin-bottom: var(--spacing-small);
+  text-align: left;
+  font-size: 1.1em;
+  /* Added text shadow for better visibility */
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+}
+
+th {
+  /* หัวตาราง สีเหลือง/ส้ม */
+  text-align: left;
+  padding: 10px;
+  color: #fbbf24;
+  background: rgba(139, 92, 246, 0.2);
+  font-weight: 600;
+  border: none;
+}
+
+td {
+  text-align: right;
+  padding: 10px;
+  /* Brighter value color for better contrast */
+  color: #d1d5db;
+  border-top: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+tr:hover td {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* Enhanced button with gradient and animation
+   ปุ่ม "More … facts" สีส้ม อยู่ล่างสุด
+   - border-radius: 8px = มุมโค้งเล็กน้อย
+   - color: orange + background orange โปร่งใส */
+section a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 25px;
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.6), rgba(251, 191, 36, 0.6));
+  border: 2px solid rgba(251, 191, 36, 0.7);
+  border-radius: 8px;
+  color: #fef3c7;
+  text-decoration: none;
+  font-size: 0.95em;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
+  text-align: center;
+}
+
+section a:hover {
+  background: linear-gradient(135deg, rgba(217, 119, 6, 0.8), rgba(251, 191, 36, 0.8));
+  border-color: rgba(251, 191, 36, 1);
+  transform: translateX(5px);
+  box-shadow: 0 6px 25px rgba(251, 191, 36, 0.35);
+}
+
+/* Background images for each planet
+   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281
+   - background-image: url(images/[planet].jpg) = รูปดาวเคราะห์
+   - ร่วมกับ section.background-blend-mode: multiply = ทำให้เข้ม */
 #jupiter {
   background-image: url(images/Jupiter.jpg);
 }
@@ -231,214 +374,149 @@ section:hover {
   background-image: url(images/Neptune.jpg);
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 4 (Card Content - Flexbox)
-   เทคนิค: จัดรูปแบบข้อความและลิงก์
-   ========================= */
-
-h3 {
-  margin-top: 0;
-  font-size: 24px;
-  font-weight: bold;
-  /* เพิ่มเอฟเฟกต์สี gradient */
-  background: linear-gradient(135deg, #6366f1, #ec4899);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-section p {
-  line-height: 1.6;
-  color: var(--color-text);
-}
-
-a {
-  color: var(--color-orange);
-  font-weight: bold;
-  text-decoration: none;
-  /* เพิ่ม smooth transition */
-  transition: all 0.3s ease;
-  display: inline-block;
-  padding: 12px 20px;
-  background: rgba(255, 176, 0, 0.15);
-  border: 2px solid var(--color-orange);
-  border-radius: 8px;
-  margin-top: 8px;
-}
-
-a:hover {
-  /* เพิ่ม hover effect พร้อมเรืองแสง */
-  color: #ffd27d;
-  background: rgba(255, 176, 0, 0.3);
-  transform: translateX(5px);
-  text-shadow: 0 0 10px var(--color-orange);
-  border-color: #ffd27d;
-}
-
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 4 (Card Content - Flexbox)
-   เทคนิค: จัดรูปแบบตารางข้อมูล
-   ========================= */
-
-table {
-  width: 100%;
-  font-size: 0.9rem;
-  border-spacing: 0;
-  /* เพิ่ม glass effect */
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  overflow: hidden;
-  margin-top: 15px;
-}
-
-caption {
-  margin-bottom: 12px;
-  font-size: 1em;
-  font-weight: bold;
-  text-align: left;
-  color: #ffd27d;
-}
-
-th {
-  width: 45%;
-  color: #ffd27d;
-  text-align: left;
-  padding: 10px;
-  background: rgba(139, 92, 246, 0.1);
-}
-
-td {
-  text-align: left;
-  padding: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 5 (Sidebar & Refactor - Flexbox)
-   เทคนิค: ใช้ Flexbox จัด Sidebar (ไม่ใช้ float)
-   คะแนน: 20% - การใช้ Flexbox
-   ========================= */
-
+/* Sidebar with flexbox vertical layout */
 aside {
   grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-medium);
+}
 
-  /* ใช้ Flexbox จัดเนื้อหาใน Sidebar แนวตั้ง */
+.sidebar-inner {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
 
-  margin: 0;
+.sidebar-inner p {
+  background: linear-gradient(135deg, rgba(88, 68, 128, 0.6), rgba(68, 48, 108, 0.6));
+  border: 2px solid rgba(139, 92, 246, 0.6);
+  border-radius: var(--border-radius-medium);
   padding: 25px;
-
-  /* เพิ่ม glass morphism effect */
-  background: var(--color-glass);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 0;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-}
-
-aside p {
-  margin: 0;
-  padding: 15px;
+  color: var(--color-text-gray);
+  font-size: 0.95em;
   text-align: center;
-  /* เพิ่ม glass card effect พร้อม transition */
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  line-height: 1.6;
 }
 
-aside p:hover {
-  /* เพิ่ม hover animation */
-  background: rgba(139, 92, 246, 0.15);
-  border-color: var(--color-primary);
-  transform: translateX(10px);
+.sidebar-inner p:hover {
+  border-color: rgba(168, 85, 247, 1);
+  background: linear-gradient(135deg, rgba(88, 68, 128, 0.8), rgba(68, 48, 108, 0.8));
+  transform: translateX(-8px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(168, 85, 247, 0.3);
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 5 (Sidebar & Refactor - Flexbox)
-   เทคนิค: ใช้ Flexbox จัด Footer (ไม่ใช้ float)
-   คะแนน: 20% - การใช้ Flexbox
-   ========================= */
-
+/* Enhanced footer with flexbox centering */
 footer {
   grid-area: footer;
-
-  /* ใช้ Flexbox จัดกึ่งกลางเนื้อหา Footer */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  /* เพิ่ม gradient background และ glass effect */
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(139, 92, 246, 0.3));
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 25px;
-  text-align: center;
-  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(88, 68, 128, 0.5), rgba(68, 48, 108, 0.5));
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  border-radius: var(--border-radius-medium);
+  margin-top: var(--spacing-medium);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+footer hr {
+  width: 100%;
+  border: none;
+  border-top: 2px solid rgba(168, 85, 247, 0.5);
+  margin-bottom: 15px;
 }
 
 footer p {
-  margin: 0;
-  text-align: center;
+  color: var(--color-primary-light);
+  font-size: 1.1em;
+  text-shadow: 0 2px 10px rgba(192, 132, 252, 0.3);
 }
 
-/* =========================
-   ผู้รับผิดชอบ: คนที่ 5 (Sidebar & Refactor - Flexbox)
-   เทคนิค: Responsive Design สำหรับหน้าจอขนาดต่างๆ
-   คะแนน: 20% - ความถูกต้องของ Visual Output
-   ========================= */
-
-/* Mobile: เปลี่ยนเป็น 1 คอลัมน์ */
-@media (max-width: 900px) {
-  article {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Desktop: รักษา Layout เดิม */
-@media (min-width: 900px) {
+/* Added responsive design with media queries */
+@media (max-width: 1024px) {
   body {
     grid-template-columns: 1fr;
     grid-template-areas:
       "header"
       "nav"
-      "main"
       "sidebar"
+      "main"
       "footer";
+  }
+
+  aside {
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .sidebar-inner {
+    flex-direction: row;
+    min-width: min-content;
+  }
+
+  .sidebar-inner p {
+    min-width: 250px;
   }
 }
 
-/* =========================
-   สรุปการแบ่งงาน:
-   
-   คนที่ 1: Main Structure (Grid) - 30%
-   - ใช้ CSS Grid สร้างโครงสร้างหลัก body
-   - กำหนด grid-template-areas
-   - กำหนด grid-area ให้ header, main
-   - เพิ่ม CSS Variables และ gradient background
-   
-   คนที่ 2: Navigation (Flex) - 20%
-   - ใช้ Flexbox ใน nav ul
-   - ไม่ใช้ float ในการจัดเมนู
-   - เพิ่ม glass morphism effect และ hover animation
-   
-   คนที่ 3: Planet Grid (Grid) - 30%
-   - ใช้ CSS Grid จัด article
-   - สร้างตาราง 2x2 สำหรับดาวเคราะห์
-   - ใช้ grid-template-columns และ gap
-   
-   คนที่ 4: Card Content (Flex) - 20%
-   - ใช้ Flexbox ใน section
-   - จัดเนื้อหาภายในการ์ดดาวเคราะห์
-   - เพิ่ม glass morphism, gradient, และ hover animations
-   - จัดรูปแบบตาราง ข้อความ ลิงก์
-   
-   คนที่ 5: Sidebar & Refactor (Flex) - 20%
-   - ใช้ Flexbox ใน aside และ footer
-   - ไม่ใช้ float ทั้งหมด
-   - จัดทำ Responsive Design
-   - เพิ่ม glass effect และ transitions
-   ========================= */
+@media (max-width: 768px) {
+  article {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  article h2 {
+    font-size: 1.8em;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: var(--spacing-small);
+  }
+
+  aside {
+    flex-direction: column;
+  }
+
+  .sidebar-inner {
+    flex-direction: column;
+  }
+
+  .sidebar-inner p {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: var(--spacing-small);
+    gap: 15px;
+  }
+
+  header {
+    padding: var(--spacing-medium);
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  section {
+    padding: 15px;
+  }
+
+  nav a.menu {
+    padding: 10px 20px;
+    width: 100%;
+    text-align: center;
+  }
+}
