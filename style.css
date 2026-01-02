@@ -41,13 +41,13 @@ body {
   color: var(--color-text-light);
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr;
   grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
-    "header sidebar"
-    "nav sidebar"
-    "main sidebar"
-    "footer footer";
+    "header"
+    "nav"
+    "main"
+    "footer";
   gap: var(--spacing-medium);
   padding: var(--spacing-medium);
 }
@@ -158,6 +158,11 @@ nav a.menu:hover {
 }
 
 main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: var(--spacing-medium);
+}
   grid-area: main;
 }
 
@@ -376,7 +381,6 @@ section a:hover {
 
 /* Sidebar with flexbox vertical layout */
 aside {
-  grid-area: sidebar;
   display: flex;
   flex-direction: column;
   gap: var(--spacing-medium);
