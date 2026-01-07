@@ -1,7 +1,8 @@
 ﻿/* ================================================================================
    นางสาวสุภัทรา พันธุ์กุหลาบ (66030192)
    Main Structure: วางโครงสร้างหลักของ Body ด้วย CSS Grid และกำหนดระบบสี (Variables)
-   ================================================================================ */
+   ================================================================================
+*/
 
 /* CSS Variables for theme colors and responsive typography */
 :root {
@@ -23,7 +24,7 @@
   --border-radius-small: 8px;
   --border-radius-medium: 10px;
   --border-radius-large: 15px;
-  
+
   --font-size-h1: clamp(1.8rem, 5vw, 3em);
   --font-size-h2: clamp(1.5rem, 4vw, 2.5em);
   --font-size-h3: clamp(1.2rem, 3.5vw, 1.5em);
@@ -433,25 +434,35 @@ footer p {
   text-shadow: 0 2px 10px rgba(192, 132, 252, 0.3);
 }
 
-/* ===== RESPONSIVE DESIGN - LAYOUT SHIFTER PATTERN ===== */
 
-@media (max-width: 1023px) {
+
+/* 66030270 นาย ภูมิ อัครธรรม Tablet  (768px–1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
   body {
     gap: clamp(0.8rem, 2vw, 1rem);
     padding: clamp(0.8rem, 3vw, 1.5rem);
   }
 
+  /* Layout: main เป็น 1 คอลัมน์ */
   main {
     grid-template-columns: 1fr;
     gap: clamp(1rem, 3vw, 1.5rem);
   }
 
+  /* กัน overflow ของ grid item */
+  main > *,
+  article > * {
+    min-width: 0;
+  }
+
+  /* ตรงนี้เวลาย่อขยายเป็น Tablet ให้ article เป็น 2 คอลัมน์ */
   article {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
   }
 
   article h2 {
-    grid-column: 1;
+    grid-column: 1 / -1;
     font-size: clamp(1.3rem, 4vw, 2em);
   }
 
@@ -485,26 +496,45 @@ footer p {
     font-size: clamp(0.8rem, 1.8vw, 0.95rem);
   }
 
+  
   aside {
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    overflow-x: auto;
-    padding: 10px 0;
+    overflow-x: visible;
+    padding: 0;
   }
 
+  
   .sidebar-inner {
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     width: 100%;
-    overflow-x: auto;
     gap: 15px;
-    padding-bottom: 10px;
+    overflow-x: visible;
+    padding-bottom: 0;
   }
 
   .sidebar-inner p {
-    flex: 0 0 auto;
-    min-width: 250px;
-    width: auto;
+    min-width: 0;
+    width: 100%;
     font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  }
+
+
+  section img {
+    display: none;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* ตรงนี้เอาไว้กันตาราง/ตัวเลขยาว ๆ ดันจอแตก */
+  table {
+    table-layout: fixed;
+  }
+  th,
+  td {
+    overflow-wrap: anywhere;
+    word-break: break-word;
   }
 
   footer {
@@ -516,6 +546,7 @@ footer p {
   }
 }
 
+/* Mobile */
 @media (max-width: 767px) {
   body {
     gap: clamp(0.6rem, 2vw, 0.9rem);
