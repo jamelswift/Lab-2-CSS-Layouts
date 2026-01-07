@@ -1,4 +1,9 @@
-﻿/* Added CSS Variables for theme colors */
+﻿/* ================================================================================
+   นางสาวสุภัทรา พันธุ์กุหลาบ (66030192)
+   Main Structure: วางโครงสร้างหลักของ Body ด้วย CSS Grid และกำหนดระบบสี (Variables)
+   ================================================================================ */
+
+/* Added CSS Variables for theme colors */
 :root {
   --color-primary: #a855f7;
   --color-primary-light: #c084fc;
@@ -26,6 +31,7 @@
   box-sizing: border-box;
 }
 
+/* ผู้รับผิดชอบ: นางสาวสุภัทรา พันธุ์กุหลาบ (66030192) - CSS Grid Main Layout */
 /* Enhanced body with CSS Grid structure and improved gradient */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -51,6 +57,11 @@ body {
   gap: var(--spacing-medium);
   padding: var(--spacing-medium);
 }
+
+/* ================================================================================
+   นายพีรพัฒน์ สิงห์ปั้น (66030130)
+   Navigation: จัดการระบบเมนูด้วย Flexbox และเอฟเฟกต์ Glass Morphism
+   ================================================================================ */
 
 /* Enhanced header with flexbox centering and glass morphism */
 header {
@@ -93,6 +104,7 @@ header h1 {
   }
 }
 
+/* ผู้รับผิดชอบ: นายพีรพัฒน์ สิงห์ปั้น (66030130) - Navigation Flexbox */
 /* Enhanced nav with flexbox and improved hover effects */
 nav {
   grid-area: nav;
@@ -163,8 +175,11 @@ main {
   grid-template-columns: 1fr 300px;
   gap: var(--spacing-medium);
 }
-  grid-area: main;
-}
+
+/* ================================================================================
+   นายภูมิ อัครธรรม (66030270)
+   Planet Grid: จัดการกลุ่มการ์ดดาวเคราะห์ใน Article ด้วย CSS Grid แบบ 2 คอลัมน์
+   ================================================================================ */
 
 /* Enhanced article heading with better typography */
 article h2 {
@@ -176,25 +191,31 @@ article h2 {
   letter-spacing: 2px;
 }
 
-/* 66030270 นาย ภูมิ อัครธรรม */
+/* ผู้รับผิดชอบ: นายภูมิ อัครธรรม (66030270) - Planet Grid 2-Column Layout */
 article {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* กล่องดาวเรียงเป็น 2 คอลัมน์ */
     gap: 20px;                             /* ตรงนี้เป็นตัวกำหนดช่องว่างให้เท่ากัน */
 }
 
-/* ตรงนี้ให้หัวข้อใน article  (h2) กว้างเต็มบรรทัด */
+/* ผู้รับผิดชอบ: นายภูมิ อัครธรรม (66030270) - Article Heading Full Width */
 article h2 {
     grid-column: 1 / -1;
 }
 
-/* ตรงนี้ใช้ gap เป็นตัวคุมระยะห่าง ไม่ให้ margin ของ section มาซ้อน */
+/* ผู้รับผิดชอบ: นายภูมิ อัครธรรม (66030270) - Section Spacing */
 article section {
     margin: 0;
 }
 
+/* ================================================================================
+   นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
+   Card Content & Sidebar & Footer: Flexbox - section/aside/footer, ไม่ใช้ float,
+   Responsive Design, glass effects, ตาราง/ลิงก์
+   ================================================================================ */
+
 /* Enhanced planet cards with background image overlay
-   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281
+   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
    - display: flex + flex-direction: column = ข้อความเรียงตั้ง
    - background-image: url(images/[planet].jpg) = รูปดาวเคราะห์เบื้องหลัง
    - background-blend-mode: multiply = ทำให้ดาวเข้ม ไม่แย่ง text
@@ -360,7 +381,7 @@ section a:hover {
 }
 
 /* Background images for each planet
-   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281
+   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
    - background-image: url(images/[planet].jpg) = รูปดาวเคราะห์
    - ร่วมกับ section.background-blend-mode: multiply = ทำให้เข้ม */
 #jupiter {
@@ -379,6 +400,7 @@ section a:hover {
   background-image: url(images/Neptune.jpg);
 }
 
+/* ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281) - Sidebar Flexbox */
 /* Sidebar with flexbox vertical layout */
 aside {
   display: flex;
@@ -413,6 +435,7 @@ aside {
   box-shadow: 0 8px 30px rgba(168, 85, 247, 0.3);
 }
 
+/* ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281) - Footer Flexbox */
 /* Enhanced footer with flexbox centering */
 footer {
   grid-area: footer;
@@ -442,6 +465,7 @@ footer p {
   text-shadow: 0 2px 10px rgba(192, 132, 252, 0.3);
 }
 
+/* ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281) - Responsive Design */
 /* Added responsive design with media queries */
 @media (max-width: 1024px) {
   body {

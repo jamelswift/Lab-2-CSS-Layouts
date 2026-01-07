@@ -9,22 +9,39 @@
 ================================================================================
 PROJECT: The Gas Planets Site
 TEAM: man in the middle
+
+TEAM MEMBERS & RESPONSIBILITIES:
+1. นายพีรพัฒน์ สิงห์ปั้น (66030130)
+   ➜ Navigation: จัดการระบบเมนูด้วย Flexbox และเอฟเฟกต์ Glass Morphism
+
+2. นางสาวสุภัทรา พันธุ์กุหลาบ (66030192)
+   ➜ Main Structure: วางโครงสร้างหลักของ Body ด้วย CSS Grid และกำหนดระบบสี (Variables)
+
+3. นายภูมิ อัครธรรม (66030270)
+   ➜ Planet Grid: จัดการกลุ่มการ์ดดาวเคราะห์ใน Article ด้วย CSS Grid แบบ 2 คอลัมน์
+
+4. นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
+   ➜ Card Content & Sidebar & Footer: Flexbox - section/aside/footer, ไม่ใช้ float,
+      Responsive Design, glass effects, ตาราง/ลิงก์
+
 ================================================================================
 HTML Structure Overview:
-- Header: ชื่อเว็บไซต์หลัก
-- Nav: เมนูนำทาง (ใช้ Flexbox จัดแนวนอน)
-- Main > Article: กลุ่มการ์ดดาวเคราะห์ (ใช้ CSS Grid 2 คอลัมน์)
+- Header: ชื่อเว็บไซต์หลัก (ผู้รับผิดชอบ: 66030130 & 66030192)
+- Nav: เมนูนำทาง (ใช้ Flexbox จัดแนวนอน - 66030130)
+- Main > Article: กลุ่มการ์ดดาวเคราะห์ (ใช้ CSS Grid 2 คอลัมน์ - 66030270)
   - 4 Sections: Jupiter, Saturn, Uranus, Neptune
-  - แต่ละ section ใช้ Flexbox column layout
-- Aside: Sidebar เนื้อหาเสริม (ใช้ Flexbox)
-- Footer: เครดิตท้ายเว็บ
+  - แต่ละ section ใช้ Flexbox column layout (66030281)
+- Aside: Sidebar เนื้อหาเสริม (ใช้ Flexbox - 66030281)
+- Footer: เครดิตท้ายเว็บ (ใช้ Flexbox - 66030281)
 ================================================================================
 -->
 <body>
     <header>
+        <!-- ผู้รับผิดชอบ: นายพีรพัฒน์ สิงห์ปั้น (66030130) & นางสาวสุภัทรา พันธุ์กุหลาบ (66030192) -->
         <h1>The Gas Planets site</h1>
     </header>
     <nav>
+        <!-- ผู้รับผิดชอบ: นายพีรพัฒน์ สิงห์ปั้น (66030130) - Navigation Flexbox -->
         <ul>
             <li><a href="#" class="menu">Home</a></li>
             <li><a href="#" class="menu">About Us</a></li>
@@ -33,7 +50,8 @@ HTML Structure Overview:
     </nav>
     <main>
         <!-- 
-        Article Container: CSS Grid 2 คอลัมน์ (ด่วน: นายภูมิ อัครธรรม 66030270)
+        ผู้รับผิดชอบ: นายภูมิ อัครธรรม (66030270)
+        Article Container: CSS Grid 2 คอลัมน์
         - grid-template-columns: repeat(2, 1fr) สำหรับจัดการ์ดดาวเคราะห์ 
         - gap: 20px ระยะห่างระหว่างการ์ด
         -->
@@ -41,7 +59,8 @@ HTML Structure Overview:
             <h2>The gas giants</h2>
             
             <!-- 
-            Planet Sections: Flexbox column layout (ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281)
+            ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
+            Planet Sections: Flexbox column layout
             - display: flex; flex-direction: column; จัดเนื้อหาแนวตั้ง
             - gap: ระยะห่างระหว่างรูป/ข้อความ/ตาราง
             - background-image + blend-mode: multiply ให้ข้อความ readable
@@ -161,7 +180,8 @@ HTML Structure Overview:
         </article>
 
         <!-- 
-        Sidebar Container: Flexbox column layout (ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281)
+        ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
+        Sidebar Container: Flexbox column layout
         - grid-area: sidebar จากการตั้ง grid-template-areas ใน main
         - display: flex; flex-direction: column; gap: ระยะห่าง
         - เนื้อหาเสริมสำหรับดาวเคราะห์ต่างๆ
@@ -176,7 +196,8 @@ HTML Structure Overview:
     </main>
     
     <!-- 
-    Footer Container: Flexbox center (ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ 66030281)
+    ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
+    Footer Container: Flexbox center
     - grid-area: footer ปกคลุมทั้งความกว้าง
     - display: flex; justify-content/align-items: center; เพื่อจัดกึ่งกลาง
     -->
