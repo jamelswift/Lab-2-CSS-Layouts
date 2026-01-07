@@ -3,7 +3,7 @@
    Main Structure: วางโครงสร้างหลักของ Body ด้วย CSS Grid และกำหนดระบบสี (Variables)
    ================================================================================ */
 
-/* Added CSS Variables for theme colors */
+/* CSS Variables for theme colors and responsive typography */
 :root {
   --color-primary: #a855f7;
   --color-primary-light: #c084fc;
@@ -23,6 +23,11 @@
   --border-radius-small: 8px;
   --border-radius-medium: 10px;
   --border-radius-large: 15px;
+  
+  --font-size-h1: clamp(1.8rem, 5vw, 3em);
+  --font-size-h2: clamp(1.5rem, 4vw, 2.5em);
+  --font-size-h3: clamp(1.2rem, 3.5vw, 1.5em);
+  --font-size-body: clamp(0.9rem, 2vw, 1.1rem);
 }
 
 * {
@@ -31,7 +36,10 @@
   box-sizing: border-box;
 }
 
-/* ผู้รับผิดชอบ: นางสาวสุภัทรา พันธุ์กุหลาบ (66030192) - CSS Grid Main Layout */
+html {
+  scroll-behavior: smooth;
+}
+
 /* Enhanced body with CSS Grid structure and improved gradient */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -56,12 +64,9 @@ body {
     "footer";
   gap: var(--spacing-medium);
   padding: var(--spacing-medium);
+  width: 100%;
+  overflow-x: hidden;
 }
-
-/* ================================================================================
-   นายพีรพัฒน์ สิงห์ปั้น (66030130)
-   Navigation: จัดการระบบเมนูด้วย Flexbox และเอฟเฟกต์ Glass Morphism
-   ================================================================================ */
 
 /* Enhanced header with flexbox centering and glass morphism */
 header {
@@ -72,7 +77,7 @@ header {
   background: linear-gradient(135deg, rgba(100, 50, 150, 0.5), rgba(70, 40, 130, 0.6));
   border: 2px solid var(--color-border-purple);
   border-radius: var(--border-radius-large);
-  padding: var(--spacing-large);
+  padding: clamp(1rem, 4vw, var(--spacing-large));
   backdrop-filter: blur(20px);
   box-shadow: 0 8px 32px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -85,7 +90,7 @@ header:hover {
 }
 
 header h1 {
-  font-size: 3em;
+  font-size: var(--font-size-h1);
   background: linear-gradient(to right, var(--color-primary-light), var(--color-primary), var(--color-primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -93,6 +98,8 @@ header h1 {
   text-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
   filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.4));
   animation: glow 2s ease-in-out infinite alternate;
+  line-height: 1.2;
+  text-align: center;
 }
 
 @keyframes glow {
@@ -104,14 +111,14 @@ header h1 {
   }
 }
 
-/* ผู้รับผิดชอบ: นายพีรพัฒน์ สิงห์ปั้น (66030130) - Navigation Flexbox */
-/* Enhanced nav with flexbox and improved hover effects */
+/* Navigation with flexbox and improved hover effects */
 nav {
   grid-area: nav;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: var(--spacing-small) 0;
+  width: 100%;
 }
 
 nav ul {
@@ -124,8 +131,9 @@ nav ul {
 }
 
 nav ul li {
-  flex: 1;
+  flex: 0 1 auto;
   max-width: 180px;
+  width: 100%;
 }
 
 nav a.menu {
@@ -137,7 +145,7 @@ nav a.menu {
   border-radius: var(--border-radius-small);
   color: var(--color-secondary);
   text-decoration: none;
-  font-size: 1em;
+  font-size: var(--font-size-body);
   font-weight: 600;
   text-align: center;
   backdrop-filter: blur(10px);
@@ -145,6 +153,7 @@ nav a.menu {
   box-shadow: 0 4px 15px rgba(251, 191, 36, 0.15);
   position: relative;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 nav a.menu::before {
@@ -174,82 +183,56 @@ main {
   display: grid;
   grid-template-columns: 1fr 300px;
   gap: var(--spacing-medium);
+  width: 100%;
 }
-
-/* ================================================================================
-   นายภูมิ อัครธรรม (66030270)
-   Planet Grid: จัดการกลุ่มการ์ดดาวเคราะห์ใน Article ด้วย CSS Grid แบบ 2 คอลัมน์
-   ================================================================================ */
 
 /* Enhanced article heading with better typography */
 article h2 {
   text-align: center;
-  font-size: 2.5em;
+  font-size: var(--font-size-h2);
   color: var(--color-primary-light);
   margin-bottom: var(--spacing-large);
   text-shadow: 0 0 20px rgba(168, 85, 247, 0.5), 0 0 40px rgba(168, 85, 247, 0.3);
   letter-spacing: 2px;
+  width: 100%;
 }
 
-/* ผู้รับผิดชอบ: นายภูมิ อัครธรรม (66030270) - Planet Grid 2-Column Layout */
 article {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* กล่องดาวเรียงเป็น 2 คอลัมน์ */
-    gap: 20px;                             /* ตรงนี้เป็นตัวกำหนดช่องว่างให้เท่ากัน */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
 }
 
-/* ผู้รับผิดชอบ: นายภูมิ อัครธรรม (66030270) - Article Heading Full Width */
 article h2 {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1;
 }
 
-/* ผู้รับผิดชอบ: นายภูมิ อัครธรรม (66030270) - Section Spacing */
 article section {
-    margin: 0;
+  margin: 0;
 }
 
-/* ================================================================================
-   นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
-   Card Content & Sidebar & Footer: Flexbox - section/aside/footer, ไม่ใช้ float,
-   Responsive Design, glass effects, ตาราง/ลิงก์
-   ================================================================================ */
-
-/* Enhanced planet cards with background image overlay
-   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
-   - display: flex + flex-direction: column = ข้อความเรียงตั้ง
-   - background-image: url(images/[planet].jpg) = รูปดาวเคราะห์เบื้องหลัง
-   - background-blend-mode: multiply = ทำให้ดาวเข้ม ไม่แย่ง text
-   - backdrop-filter: blur(15px) = glass morphism effect
-   - border-radius: 24px = มุมโค้ง */
+/* Enhanced planet cards with background image overlay */
 section {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  
-  /* Background image covering entire card */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-blend-mode: multiply;
   background-color: rgba(0, 0, 0, 0.6);
-  
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 24px;
   padding: 30px;
   backdrop-filter: blur(16px);
-  
-  /* Enhanced shadow for prominent card appearance */
-  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(168, 85, 247, 0.2), inset 0 1px 0
-    rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4), 0 0 0 1px rgba(168, 85, 247, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
 section::before {
-  /* Pseudo-element สำหรับเอฟเฟกต์เรืองแสงเมื่อ hover
-     ไม่ได้อยู่ใน HTML แต่สร้างขึ้นด้วย CSS
-     ให้การ์ดดูเรืองแสงและมีเรียวเจือจ้า */
   content: "";
   position: absolute;
   top: -50%;
@@ -267,19 +250,13 @@ section:hover::before {
 }
 
 section:hover {
-  /* Brighter purple border on hover */
   border-color: rgba(168, 85, 247, 1);
   transform: translateY(-8px) scale(1.02);
-  /* More intense glow effect on hover */
-  box-shadow: 0 16px 48px rgba(168, 85, 247, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.5), inset 0 1px 0
-    rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 48px rgba(168, 85, 247, 0.5), 0 0 0 1px rgba(168, 85, 247, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 section h3 {
-  /* ชื่อดาวเคราะห์ (Jupiter/Saturn/Uranus/Neptune)
-     - สีม่วงฟ้า (gradient text)
-     - ตัวหนา ขนาดใหญ่ */
-  font-size: 24px;
+  font-size: var(--font-size-h3);
   font-weight: bold;
   background: linear-gradient(135deg, #6366f1, #ec4899);
   -webkit-background-clip: text;
@@ -287,11 +264,13 @@ section h3 {
   background-clip: text;
   margin: 0 0 15px 0;
   text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
+  line-height: 1.2;
 }
 
 section img {
-  /* ป้องกัน <img> tag แสดงผล เพราะใช้ background-image แล้ว */
   display: none;
+  max-width: 100%;
+  height: auto;
 }
 
 section:hover img {
@@ -299,22 +278,18 @@ section:hover img {
 }
 
 section p {
-  font-size: 0.9em;
-  line-height: 1.5;
+  font-size: var(--font-size-body);
+  line-height: 1.6;
   margin-bottom: 15px;
-  /* Brighter text color for better readability on black background */
   color: #e5e7eb;
 }
 
-/* Enhanced table with glass morphism effect
-   ตารางข้อมูล "Facts" อยู่บนรูปดาวเคราะห์
-   - background: rgba(...) = โปร่งใส
-   - th สีเหลือง (caption/header) */
+/* Enhanced table with glass morphism effect */
 table {
   width: 100%;
   margin: 15px 0;
   border-collapse: collapse;
-  font-size: 0.85em;
+  font-size: clamp(0.75rem, 1.5vw, 0.85em);
   background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
   overflow: hidden;
@@ -326,12 +301,10 @@ caption {
   margin-bottom: var(--spacing-small);
   text-align: left;
   font-size: 1.1em;
-  /* Added text shadow for better visibility */
   text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
 }
 
 th {
-  /* หัวตาราง สีเหลือง/ส้ม */
   text-align: left;
   padding: 10px;
   color: #fbbf24;
@@ -343,7 +316,6 @@ th {
 td {
   text-align: right;
   padding: 10px;
-  /* Brighter value color for better contrast */
   color: #d1d5db;
   border-top: 1px solid rgba(139, 92, 246, 0.1);
 }
@@ -352,10 +324,7 @@ tr:hover td {
   background: rgba(139, 92, 246, 0.1);
 }
 
-/* Enhanced button with gradient and animation
-   ปุ่ม "More … facts" สีส้ม อยู่ล่างสุด
-   - border-radius: 8px = มุมโค้งเล็กน้อย
-   - color: orange + background orange โปร่งใส */
+/* Enhanced button with gradient and animation */
 section a {
   display: inline-block;
   margin-top: 10px;
@@ -371,6 +340,7 @@ section a {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(251, 191, 36, 0.2);
   text-align: center;
+  word-break: break-word;
 }
 
 section a:hover {
@@ -380,10 +350,7 @@ section a:hover {
   box-shadow: 0 6px 25px rgba(251, 191, 36, 0.35);
 }
 
-/* Background images for each planet
-   ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281)
-   - background-image: url(images/[planet].jpg) = รูปดาวเคราะห์
-   - ร่วมกับ section.background-blend-mode: multiply = ทำให้เข้ม */
+/* Background images for each planet */
 #jupiter {
   background-image: url(images/Jupiter.jpg);
 }
@@ -400,18 +367,19 @@ section a:hover {
   background-image: url(images/Neptune.jpg);
 }
 
-/* ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281) - Sidebar Flexbox */
 /* Sidebar with flexbox vertical layout */
 aside {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-medium);
+  width: 100%;
 }
 
 .sidebar-inner {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 100%;
 }
 
 .sidebar-inner p {
@@ -420,7 +388,7 @@ aside {
   border-radius: var(--border-radius-medium);
   padding: 25px;
   color: var(--color-text-gray);
-  font-size: 0.95em;
+  font-size: var(--font-size-body);
   text-align: center;
   backdrop-filter: blur(15px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -435,7 +403,6 @@ aside {
   box-shadow: 0 8px 30px rgba(168, 85, 247, 0.3);
 }
 
-/* ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281) - Footer Flexbox */
 /* Enhanced footer with flexbox centering */
 footer {
   grid-area: footer;
@@ -450,6 +417,7 @@ footer {
   margin-top: var(--spacing-medium);
   backdrop-filter: blur(15px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  width: 100%;
 }
 
 footer hr {
@@ -465,86 +433,254 @@ footer p {
   text-shadow: 0 2px 10px rgba(192, 132, 252, 0.3);
 }
 
-/* ผู้รับผิดชอบ: นางสาววิภัสศศิชา บำเพ็ญบุญ (66030281) - Responsive Design */
-/* Added responsive design with media queries */
-@media (max-width: 1024px) {
+/* ===== RESPONSIVE DESIGN - LAYOUT SHIFTER PATTERN ===== */
+
+@media (max-width: 1023px) {
   body {
+    gap: clamp(0.8rem, 2vw, 1rem);
+    padding: clamp(0.8rem, 3vw, 1.5rem);
+  }
+
+  main {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      "header"
-      "nav"
-      "sidebar"
-      "main"
-      "footer";
+    gap: clamp(1rem, 3vw, 1.5rem);
   }
 
-  aside {
-    flex-direction: row;
-    overflow-x: auto;
-  }
-
-  .sidebar-inner {
-    flex-direction: row;
-    min-width: min-content;
-  }
-
-  .sidebar-inner p {
-    min-width: 250px;
-  }
-}
-
-@media (max-width: 768px) {
   article {
     grid-template-columns: 1fr;
   }
 
-  header h1 {
-    font-size: 2em;
+  article h2 {
+    grid-column: 1;
+    font-size: clamp(1.3rem, 4vw, 2em);
   }
 
-  article h2 {
-    font-size: 1.8em;
+  section {
+    padding: clamp(1.2rem, 3vw, 1.8rem);
+  }
+
+  section h3 {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+  }
+
+  section p {
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+  }
+
+  header h1 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+  }
+
+  header {
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  nav ul li {
+    flex: 0 1 auto;
+    max-width: 150px;
+  }
+
+  nav a.menu {
+    padding: 10px 20px;
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  }
+
+  aside {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    padding: 10px 0;
+  }
+
+  .sidebar-inner {
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+  }
+
+  .sidebar-inner p {
+    flex: 0 0 auto;
+    min-width: 250px;
+    width: auto;
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  }
+
+  footer {
+    padding: 20px clamp(1rem, 3vw, 1.5rem);
+  }
+
+  footer p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  body {
+    gap: clamp(0.6rem, 2vw, 0.9rem);
+    padding: clamp(0.6rem, 2vw, 1rem);
+    grid-template-rows: auto auto 1fr auto;
+  }
+
+  header {
+    padding: clamp(0.8rem, 2.5vw, 1.2rem);
+    border-radius: clamp(0.5rem, 2vw, 1rem);
+  }
+
+  header h1 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+    font-weight: 700;
+  }
+
+  nav {
+    width: 100%;
   }
 
   nav ul {
+    width: 100%;
     flex-direction: column;
-    gap: var(--spacing-small);
+    gap: clamp(0.5rem, 1.5vw, 0.8rem);
+  }
+
+  nav ul li {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 auto;
+  }
+
+  nav a.menu {
+    padding: 12px 15px;
+    width: 100%;
+    font-size: clamp(0.8rem, 2vw, 0.95rem);
+    white-space: normal;
+  }
+
+  main {
+    grid-template-columns: 1fr;
+    gap: clamp(0.8rem, 2vw, 1rem);
+    width: 100%;
+  }
+
+  article {
+    grid-template-columns: 1fr;
+    gap: clamp(0.8rem, 2vw, 1rem);
+    width: 100%;
+  }
+
+  article h2 {
+    font-size: clamp(1.1rem, 5vw, 1.6rem);
+    margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
+    letter-spacing: 1px;
+  }
+
+  section {
+    padding: clamp(1rem, 2.5vw, 1.4rem);
+    gap: clamp(0.8rem, 2vw, 1rem);
+    border-radius: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  section h3 {
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    margin-bottom: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  section p {
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+    line-height: 1.5;
+    margin-bottom: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  table {
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+    margin: clamp(0.8rem, 2vw, 1rem) 0;
+  }
+
+  th {
+    padding: 8px 5px;
+    font-size: clamp(0.7rem, 1.5vw, 0.8rem);
+  }
+
+  td {
+    padding: 8px 5px;
+  }
+
+  caption {
+    font-size: clamp(0.9rem, 2vw, 1rem);
+    margin-bottom: clamp(0.5rem, 1.5vw, 0.8rem);
+  }
+
+  section a {
+    padding: 10px 20px;
+    font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+    margin-top: clamp(0.8rem, 2vw, 1rem);
+    width: 100%;
   }
 
   aside {
     flex-direction: column;
+    width: 100%;
+    gap: clamp(0.8rem, 2vw, 1.2rem);
   }
 
   .sidebar-inner {
     flex-direction: column;
+    width: 100%;
+    gap: clamp(0.8rem, 2vw, 1.2rem);
+    min-width: auto;
   }
 
   .sidebar-inner p {
     min-width: auto;
+    width: 100%;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  }
+
+  footer {
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    border-radius: clamp(0.5rem, 2vw, 1rem);
+    gap: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  footer hr {
+    margin-bottom: clamp(0.8rem, 2vw, 1rem);
+  }
+
+  footer p {
+    font-size: clamp(0.9rem, 2vw, 1rem);
   }
 }
 
 @media (max-width: 480px) {
   body {
-    padding: var(--spacing-small);
-    gap: 15px;
-  }
-
-  header {
-    padding: var(--spacing-medium);
+    gap: clamp(0.5rem, 1.5vw, 0.7rem);
+    padding: clamp(0.5rem, 1.5vw, 0.8rem);
   }
 
   header h1 {
-    font-size: 1.5em;
-  }
-
-  section {
-    padding: 15px;
+    font-size: clamp(1rem, 4vw, 1.4rem);
   }
 
   nav a.menu {
-    padding: 10px 20px;
-    width: 100%;
-    text-align: center;
+    padding: 10px 12px;
+    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  }
+
+  section {
+    padding: clamp(0.8rem, 2vw, 1.2rem);
+  }
+
+  section h3 {
+    font-size: clamp(0.95rem, 2.5vw, 1rem);
+  }
+
+  section p {
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  }
+
+  .sidebar-inner p {
+    padding: clamp(0.8rem, 2vw, 1.2rem);
+    font-size: clamp(0.75rem, 1.5vw, 0.9rem);
   }
 }
