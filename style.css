@@ -652,6 +652,196 @@ footer p {
   }
 }
 
+/* ================================================================================
+   พีรพัฒน์ สิงห์ปั้น (66030130)
+   Mobile Specialist (เล็ก: < 600px)
+   Coding: CSS Media Query สำหรับ Mobile
+   - จัด Layout ให้เป็น 1 คอลัมน์ (Column Drop/Shift) เพื่อให้อ่านง่าย
+   - กำหนดขนาด font-size (หน่วย rem) และช่องว่าง (หน่วย em) ที่เหมาะกับการใช้นิ้วสัมผัส
+   ================================================================================ */
+@media (max-width: 599px) {
+  /* Body: Single Column Layout (Column Drop Pattern) */
+  body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "footer";
+    gap: 0.8em;
+    padding: 0.5em;
+    font-size: 1rem;
+  }
+
+  /* Header: Touch-friendly sizing */
+  header {
+    padding: 1em;
+    border-radius: 0.75rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Navigation: Single Column, Touch-friendly buttons */
+  nav {
+    width: 100%;
+    padding: 0.5em;
+  }
+
+  nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    width: 100%;
+    padding: 0;
+  }
+
+  nav ul li {
+    width: 100%;
+    list-style: none;
+  }
+
+  nav a.menu {
+    display: block;
+    width: 100%;
+    padding: 1em 1.5em;
+    font-size: 1rem;
+    text-align: center;
+    min-height: 48px; /* Touch target size (48px minimum) */
+    line-height: 1.5;
+  }
+
+  /* Main: Single Column Layout */
+  main {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    width: 100%;
+    padding: 0;
+  }
+
+  /* Article: Stacked sections (Column Drop) */
+  article {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1em;
+    width: 100%;
+  }
+
+  article h2 {
+    font-size: 1.375rem;
+    margin-bottom: 0.75em;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* Section: Full width, Touch-optimized spacing */
+  section {
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75em;
+  }
+
+  section h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5em;
+    line-height: 1.3;
+  }
+
+  section img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 0.5em 0;
+  }
+
+  section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.75em;
+  }
+
+  /* Table: Responsive, touch-friendly cells */
+  table {
+    width: 100%;
+    font-size: 0.875rem;
+    margin: 0.75em 0;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 0.75em 0.5em;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  caption {
+    font-size: 1rem;
+    margin-bottom: 0.5em;
+    font-weight: 600;
+  }
+
+  /* Links: Touch-friendly button size */
+  section a {
+    display: inline-block;
+    padding: 1em 1.5em;
+    font-size: 1rem;
+    min-height: 48px; /* Touch target size */
+    width: 100%;
+    text-align: center;
+    border-radius: 0.5rem;
+    margin-top: 0.75em;
+  }
+
+  /* Aside/Sidebar: Single Column */
+  aside {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75em;
+  }
+
+  .sidebar-inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75em;
+  }
+
+  .sidebar-inner p {
+    width: 100%;
+    padding: 1em;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Footer: Touch-friendly spacing */
+  footer {
+    padding: 1em;
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+
+  footer hr {
+    margin: 0.75em 0;
+  }
+
+  footer p {
+    font-size: 0.9375rem;
+    line-height: 1.5;
+  }
+}
+
 @media (max-width: 480px) {
   body {
     gap: clamp(0.5rem, 1.5vw, 0.7rem);
