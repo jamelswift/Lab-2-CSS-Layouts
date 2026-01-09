@@ -1,7 +1,7 @@
 ﻿/* ================================================================================
    นางสาวสุภัทรา พันธุ์กุหลาบ (66030192)
    Main Structure: วางโครงสร้างหลักของ Body ด้วย CSS Grid และกำหนดระบบสี (Variables)
-   Role: Desktop Specialist – Layout Shifter (CSS only)
+   Role: Desktop Specialist (Layout Shifter) + Media & Asset Optimizer
    ================================================================================ */
 
 /* ===================== CSS VARIABLES ===================== */
@@ -74,7 +74,7 @@ body {
 
   gap: var(--spacing-m);
   padding: var(--spacing-m);
-  overflow-x: hidden;
+  overflow-x: hidden; /* ป้องกัน scrollbar แนวนอน */
 }
 
 /* ===================== HEADER ===================== */
@@ -163,7 +163,7 @@ section p {
   line-height: 1.6;
 }
 
-/* Desktop: ใช้ background แทนรูป */
+/* Desktop: ใช้ background image */
 section img {
   display: none;
 }
@@ -268,14 +268,14 @@ footer p {
     font-size: clamp(1.3rem, 4vw, 2em);
   }
 
-  /* Tablet: แสดงรูปจริง แทน background */
+  /* Tablet/Mobile: ใช้ <img> แทน background (Optimized for performance) */
   section img {
     display: block;
-    width: 100%;
+    max-width: 100%;
+    height: auto;
     border-radius: var(--radius-m);
   }
 
-  /* ไม่ใช้ background image */
   section {
     background-image: none !important;
   }
@@ -673,4 +673,39 @@ footer p {
     padding: clamp(0.8rem, 2vw, 1.2rem);
     font-size: clamp(0.75rem, 1.5vw, 0.9rem);
   }
+}
+
+/* =================================================================
+   Media & Asset Optimizer (แทนคนที่ 5)
+   ================================================================= */
+
+/* Responsive Images & Media */
+img,
+video,
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive Video Wrapper (เผื่อมีวิดีโอ) */
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.video-wrapper iframe,
+.video-wrapper video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ป้องกัน table ล้นจอ */
+table {
+  display: block;
+  overflow-x: auto;
 }
